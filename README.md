@@ -1,28 +1,21 @@
-# 📼 Walkman OS
+Walkman OS 📼
+I created this operating system becouse of my love towards music and for the reason that modern websites can feel very generic and boring.
+Retro look and aesthetics of a Sony Walkman give a feel of 90s music and physical feel of it’s tactile buttons.
+I challenged myself to build the whole thing from scratch using vanilla HTML, CSS, and plain JavaScript.
 
-A 90s retro-inspired virtual desktop built with vanilla HTML, CSS, and JavaScript. Styled around a classic Sony Walkman aesthetic, it features tactile controls, custom audio playback, a live HTML5 camera, and full desktop window management.
+What’s inside?
 
----
+Walkman MP3 player: A custom designed Walkman MP3 player. You can import your own song and play it using the pause, play and top buttons. Additionally I have also included a volume slider.
 
-## ✨ Features
+Retro snap Cam: A 90s-styled webcam window that streams your real camera feed from which you can take photos and save them directly.
 
-- **📼 Walkman Audio Deck**: Load custom local `.mp3` files or play default audio with animated cassette tape reels.
-- **🎛️ Audio Engine & Scrubbing**: Interactive physical buttons (Play, Pause, Stop), volume controller, track title display, and a seekable timeline bar.
-- **📸 Retro Snap Cam**: HTML5 webcam application complete with an 80s/90s viewfinder HUD, photo capture, and instant image downloading.
-- **📝 Mixtape Notes**: Desktop notepad app for jotting down tracklists, lyrics, or quick notes.
-- **📅 LED Calendar**: Clickable live digital clock in the top taskbar that toggles an interactive retro grid calendar.
-- **🪟 Desktop Window Manager**: Multi-window system featuring custom drag handles, close controls, and dynamic `z-index` focus layer switching.
+Mixtape notepad: A simple draggable notepad to write track lists, songs, albums, artists or quick thoughts.
 
----
+Taskbar calendar: Clicking the digital clock in the top taskbar opens a digital calendar that highlights today’s date.
 
-## 🛠️ Tech Stack & Structure
+How to run
 
-- **HTML5**: Semantic layout and media structures (`<audio>`, `<video>`, `<canvas>`).
-- **CSS3**: Custom retro color palette (`#E8DCC4`, `#3E3550`), keyframe animations, grid layouts, and glassmorphism taskbar styling.
-- **JavaScript (ES6)**: Vanilla DOM manipulation, WebRTC camera API, HTML5 Audio API, and event-driven window dragging.
+1. Download or clone this repo.
+2. Open ‘index.html’ in your browser.
 
-```text
-├── index.html   # Desktop layout, top taskbar, and application markup
-├── style.css    # Retro theme styling, typography, reel animations, and window layouts
-├── script.js    # Window manager (dragging & focus), audio engine, camera stream, and calendar logic
-└── README.md    # Documentation
+3. Click any app icon or the clock in the top taskbar to launch windows.
