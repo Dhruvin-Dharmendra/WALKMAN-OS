@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Space+Mono&family=Quicksand&display=swap" rel="stylesheet">
+</head>
+
+<body style="margin: 0; height: 100vh; background-color: #E8DCC4; font-family: 'Quicksand', sans-serif; color: #4A3423; position: relative;">
+<div style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; backdrop-filter: blur(10px); background-color: rgba(62, 53, 80, 0.15);">
+
+    <p style="margin-left: 16px; font-family: 'Orbitron', Orbitron; font-weight: 700; background-color: rgba(255,255,255,0.5); padding: 4px 12px; border-radius: 16px;">WALKMAN</p>
+    <p style="font-family: 'Orbitron', monospace; background-color: rgba(255,255,255,0.35); padding: 4px 12px; border-radius: 16px;">IT'S MORE THAN MUSIC!</p>
+ <p id="timeElement" style="margin-right: 16px; font-family: 'Orbitron', monospace; background-color: rgba(255,255,255,0.5); padding: 4px 12px; border-radius: 16px;">Time</p>
+
+</div>
+
+<div style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); width: 720px; background-color: #F4EBDA; border: solid; border-radius: 16px; padding: 24px;">  
+    <h1 style="margin: 4px; text-align: center;">WALKMAN</h1>
+
+   <p style="font-family: 'Space Mono', monospace; color: #7A6B8A; text-align: center; margin: 4px;">LOSE YOURSELF IN MUSIC</p>
+<img src="224-2243615_mp3-sticker-80s-walkman.png"  style="width: 180px; height: 240px; border-radius: 8px; margin: 18px 0px 16px 280px;" />
+
+<p style="font-family: 'Orbitron', cursive; font-size: 26px; text-align: center; margin: 4px;">SONY WALKMAN</p>
+
+  <p style="text-align: center; padding: 8px;">
+      dusting off the <strong>walkman</strong> and hitting rewind — this is where i keep my favorite tapes and mixtapes 📼
+    </p>
+
+    <div style="display: flex; justify-content: space-between; padding: 8px;">
+      <a href="https://open.spotify.com/" style="font-family: 'Orbitron', monospace; color: #F4EBDA; background-color: #B5502D; padding: 8px 16px; border-radius: 20px;">SPOTIFY</a>
+      <!-- CHANGE ME: link to your real playlist -->
+      <a href="https://instagram.com/" style="font-family: 'Orbitron', monospace; color: #4A3423; background-color: #D6A84F; padding: 8px 16px; border-radius: 20px;">INSTAGRAM</a>
+</div>
+ 
+  </div>
+ 
+  <script>
+    function updateTime() {
+        var currentTime = new Date().toLocaleString();
+        var timeText = document.querySelector("#timeElement");
+        timeText.innerHTML = currentTime;
+    }
+    setInterval(updateTime, 1000);
+  </script>
+ 
+
+
+      </html>

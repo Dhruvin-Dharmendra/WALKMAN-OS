@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walkman OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Quicksand:wght@400;600&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="window" id="calendarWindow" style="top: 70px; right: 20px; width: 280px; display: none;">
+  <div class="window-header" id="calendarWindowheader">
+    <div class="close-btn" id="calendarclose"></div>
+    <p class="header-text">📅CALENDAR</p>
+    <div style="width: 14px;"></div>
+  </div>
+  <div class="window-content" style="padding: 12px;">
+    <div class="calendar-header-bar">
+      <span id="calMonthYear">MONTH YEAR</span>
+    </div>
+    <div class="calendar-grid">
+      <div class="day-label">S</div><div class="day-label">M</div><div class="day-label">T</div>
+      <div class="day-label">W</div><div class="day-label">T</div><div class="day-label">F</div>
+      <div class="day-label">S</div>
+    </div>
+    <div class="calendar-grid" id="calendarDays"></div>
+  </div>
+</div>
+
+  <header class="top-bar">
+    <div class="nav-app-group">
+      <button id="welcomeopen" class="icon-nav-button" title="Walkman Player">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="3" />
+          <circle cx="8" cy="12" r="3" />
+          <circle cx="16" cy="12" r="3" />
+          <path d="M11 12h2" />
+        </svg>
+        <span>WALKMAN</span>
+      </button>
+
+      <button id="cameraopen" class="icon-nav-button" title="Retro Cam">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+          <circle cx="12" cy="13" r="4"/>
+        </svg>
+        <span>CAM</span>
+      </button>
+
+      <button id="notepadopen" class="icon-nav-button" title="Mixtape Notes">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 20h9" />
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+        </svg>
+        <span>NOTES</span>
+      </button>
+    </div>
+
+    <p class="nav-tagline">IT'S MORE THAN MUSIC!</p>
+<p id="timeElement" class="nav-button" title="Click for Calendar" style="cursor: pointer;">00:00:00</p>  </header>
+  
+  <!-- Walkman Window -->
+  <div class="window" id="welcome" style="top: 80px; left: 50px;">
+    <div class="window-header" id="welcomeheader">
+      <div class="close-btn" id="welcomeclose"></div>
+      <p class="header-text">📼 WALKMAN DECK</p>
+      <div style="width: 14px;"></div>
+    </div>
+
+    <div class="window-content">
+      <h1 class="main-title">WALKMAN</h1>
+      <p class="subtitle">LOSE YOURSELF IN MUSIC</p>
+
+      <div class="player-deck">
+        <div class="file-upload-wrapper">
+          <label for="musicUploader" class="custom-file-upload">📁 LOAD MP3 TAPE</label>
+          <input type="file" id="musicUploader" accept="audio/*" />
+        </div>
+
+        <div class="cassette-container">
+          <div class="tape-reel" id="reelLeft">⚙️</div>
+          <div class="tape-window"><div class="tape-line"></div></div>
+          <div class="tape-reel" id="reelRight">⚙️</div>
+        </div>
+
+        <p class="track-title" id="trackTitle">No Tape Loaded</p>
+        
+        <div class="progress-container">
+          <span id="currentTimeDisplay" class="time-display">0:00</span>
+          <input type="range" id="progressBar" value="0" min="0" max="100" step="0.1" />
+          <span id="durationDisplay" class="time-display">0:00</span>
+        </div>
+
+        <div class="deck-controls">
+          <button class="deck-btn" id="playBtn">▶ PLAY</button>
+          <button class="deck-btn" id="pauseBtn">⏸ PAUSE</button>
+          <button class="deck-btn" id="stopBtn">⏹ STOP</button>
+        </div>
+
+        <div class="volume-container">
+          <label for="volumeSlider" class="volume-label">🔊 VOL</label>
+          <input type="range" id="volumeSlider" value="80" min="0" max="100" />
+        </div>
+
+        <audio id="audioPlayer" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- Retro Camera Window -->
+  <div class="window" id="camera" style="top: 100px; left: 420px; width: 360px; display: none;">
+    <div class="window-header" id="cameraheader">
+      <div class="close-btn" id="cameraclose"></div>
+      <p class="header-text">📸 RETRO SNAP CAM</p>
+      <div style="width: 14px;"></div>
+    </div>
+    
+    <div class="window-content" style="padding: 16px;">
+      <div class="viewfinder">
+        <video id="webcam" autoplay playsinline></video>
+        <canvas id="photoCanvas" style="display:none;"></canvas>
+        <div class="rec-dot">● REC</div>
+        <div class="viewfinder-crosshair">+</div>
+      </div>
+
+      <div class="deck-controls" style="margin-top: 12px;">
+        <button class="deck-btn" id="snapBtn">📸 SNAP</button>
+        <a id="downloadLink" class="deck-btn" style="display:none; text-decoration:none;" download="retro-snap.png">💾 SAVE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes Window -->
+  <div class="window" id="notepad" style="top: 140px; left: 160px; width: 320px; display: none;">
+    <div class="window-header" id="notepadheader">
+      <div class="close-btn" id="notepadclose"></div>
+      <p class="header-text">📝 MIXTAPE NOTES</p>
+      <div style="width: 14px;"></div>
+    </div>
+    <div class="window-content" style="padding: 14px;">
+      <p style="margin: 0 0 6px 0; font-family: 'Space Mono', monospace; font-size: 11px; color: #7A6B8A;">TRACKLIST & NOTES:</p>
+      <textarea class="notepad-input" placeholder="Side A:&#10;1. Track 1&#10;&#10;Side B:&#10;1. Track 2"></textarea>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
