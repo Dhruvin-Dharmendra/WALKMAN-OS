@@ -1,363 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Quicksand&family=Space+Mono&display=swap');
 
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0px;
-  padding: 0px;
-  height: 100vh;
-  background-image: url("ebd9ebf4e7540eeac4305df93ff34bb1.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: Quicksand, sans-serif;
-  color: #4A3423;
-  position: relative;
-  overflow: hidden;
+  background-image: url('ebd9ebf4e7540eeac4305df93ff34bb1.jpg');
+  background-size: cover;      
+  background-position: center;  
+  background-repeat: no-repeat;  
+  background-attachment: fixed; 
 }
 
-.top-bar {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(28, 78, 2, 0.15);
-  backdrop-filter: blur(10px);
-  padding: 4px 16px 4px 16px;
-  z-index: 99999;
-}
-
-.nav-app-group {
-  display: flex;
-  gap: 8px;
-}
-
-.icon-nav-button {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.45);
-  border: 1.5px solid #4A3423;
-  border-radius: 20px;
-  padding-top: 4px;
-  padding-right: 12px;
-  padding-bottom: 4px;
-  padding-left: 8px;
-  cursor: pointer;
-  color: #4A3423;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 11px;
-  font-weight: bold;
-}
-
-.icon-nav-button:hover {
-  background: #F4EBDA;
-  margin-top: -1px;
-}
-
-.nav-tagline, .nav-button {
-  font-family: Orbitron;
-  font-size: 11px;
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.4);
-  padding: 5px 12px 5px 12px;
-  border-radius: 16px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
-
-.window {
-  position: absolute;
-  width: 90%;
-  max-width: 600px;
-  background-color: #F4EBDA;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #4A3423;
-  border-radius: 14px;
-  box-shadow: 0px 10px 25px #332211;
-  display: flex;
-  flex-direction: column;
-}
-
-.window-header {
-  background: #D6C2A5;
-  border-bottom: 2px solid #4A3423;
-  padding: 8px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: grab;
-}
-
-.close-btn {
-  width: 12px;
-  height: 12px;
-  background: #B5502D;
-  border: 1px solid #7E3218;
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-.header-text {
-  margin: 0;
-  font-family: 'Orbitron';
-  font-weight: bold;
-  font-size: 11px;
-  letter-spacing: 1px;
-}
-
-.window-content {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.main-title {
-  margin: 0px;
+#topbar {
+  background-color: rgb(255, 199, 143);
+  padding: 10px;
+  color: white;
   font-family: 'Orbitron', sans-serif;
 }
 
-.subtitle {
-  font-family: 'Space Mono', monospace;
-  font-size: 12px;
-  color: #7A6B8A;
-  margin-top: 2px;
-  margin-bottom: 12px;
+#topbar button {
+  margin-right: 5px;
 }
 
-#musicUploader {
-  display: none;
+#clock {
+  float: right;
+  color: rgb(255, 0, 106);
+  font-family: 'Orbitron', sans-serif;
 }
 
-.custom-file-upload {
-  font-family: Orbitron;
-  font-size: 10px;
-  font-weight: bold;
-  padding: 6px 12px;
-  background: #7A6B8A;
-  color: #F4EBDA;
-  border: 2px solid #4A3423;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 0px 3px 0px #4A3423;
-}
-
-.cassette-container {
-  width: 230px;
-  height: 115px;
-  background: #3E3550;
-  border: 4px solid #4A3423;
-  border-radius: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
-.tape-reel {
-  font-size: 34px;
-}
-
-.tape-window {
-  width: 60px;
-  height: 24px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid #4A3423;
-  position: relative;
-}
-
-.tape-line {
-  width: 100%;
-  height: 4px;
-  background: #B5502D;
+.box {
+  background-color: white;
+  border: 3px solid black;
+  font-family: 'Orbitron', sans-serif;
+  width: 250px;
   position: absolute;
-  top: 8px;
+  top: 80px;
+  left: 50px;
 }
 
-.spinning {
-  animation-name: spin;
-  animation-duration: 2s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+.boxtop {
+  background-color: rgb(254, 255, 207);
+  padding: 5px;
+  border-bottom: 2px solid black;
+  cursor: pointer;
+}
+
+.closeX {
+  float: right;
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+}
+
+.boxbody {
+  padding: 10px;
+  text-align: center;
+}
+
+#tape {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-.track-title {
-  font-family: 'Space Mono';
-  font-size: 11px;
-  margin-top: 4px;
-  margin-bottom: 8px;
-}
-
-.progress-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-}
-
-.time-display {
-  font-family: 'Space Mono';
-  font-size: 10px;
-}
-
-#progressBar {
-  width: 100%;
-  accent-color: #B5502D;
-}
-
-.deck-controls {
-  display: flex;
-  gap: 8px;
-}
-
-.deck-btn {
-  font-family: 'Orbitron';
-  font-size: 10px;
-  font-weight: bold;
-  padding: 6px 12px;
-  background: #D6A84F;
-  color: #4A3423;
-  border: 2px solid #4A3423;
-  border-radius: 5px;
+button {
+  background-color: orange;
+  border: 2px solid black;
+  padding: 5px 10px;
+  margin-top: 5px;
   cursor: pointer;
-  box-shadow: 0 3px 0 #4A3423;
-}
-
-.deck-btn.pressed, .deck-btn:active {
-  box-shadow: 0px 0px 0px #000;
-  margin-top: 3px;
-  background: #B5502D;
-  color: #F4EBDA;
-}
-
-.volume-container {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 10px;
-  font-family: 'Orbitron';
-  font-size: 10px;
-  font-weight: bold;
-}
-
-.viewfinder {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  background: black;
-  border: 3px solid #4A3423;
-  border-radius: 8px;
-  overflow: hidden;
 }
 
 #webcam {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: contrast(110%) sepia(20%);
+  background-color: black;
 }
 
-.rec-dot {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  font-family: 'Orbitron';
-  font-size: 10px;
-  font-weight: bold;
-  color: red;
-  animation: blink 1s infinite;
-}
-
-.viewfinder-crosshair {
-  position: absolute;
-  top: 45%;
-  left: 48%;
-  color: white;
-  font-size: 18px;
-  font-family: monospace;
-}
-
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-.notepad-input {
+#notesArea {
   width: 100%;
-  height: 140px;
-  background: white;
-  border: 2px solid #4A3423;
-  border-radius: 6px;
-  font-family: 'Space Mono';
-  font-size: 12px;
-  padding: 8px;
+  height: 100px;
 }
 
-.calendar-header-bar {
-  font-family: 'Orbitron';
-  font-weight: bold;
-  font-size: 12px;
-  color: #4A3423;
-  margin-bottom: 8px;
-  text-align: center;
-}
-
-.calendar-grid {
+#calGrid {
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto;
-  gap: 4px;
-  width: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+#calGrid div {
+  border: 1px solid black;
   text-align: center;
+  font-size: 12px;
 }
 
-.day-label {
-  font-family: 'Orbitron';
-  font-weight: bold;
-  font-size: 10px;
-  color: #7A6B8A;
-  padding-bottom: 4px;
-}
-
-.cal-day {
-  font-family: 'Space Mono';
-  font-size: 11px;
-  background: #FFFFFF;
-  border: 1px solid #4A3423;
-  border-radius: 4px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  color: #4A3423;
-}
-
-.cal-day.empty {
-  background: none;
-  border: none;
-}
-
-.cal-day.today {
-  background: #B5502D;
+.today {
+  background-color: red;
   color: white;
-  font-weight: bold;
 }
