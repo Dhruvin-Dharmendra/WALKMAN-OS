@@ -1,0 +1,248 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  background-color: #d1c7bd;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.top-bar {
+  background-color: #ffb77d;
+  height: 40px;
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  user-select: none;
+}
+
+.bar-left {
+  display: flex;
+  gap: 6px;
+}
+
+.top-btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  background-color: #ffa45b;
+  border: 1px solid black;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.bar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.os-logo {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: black;
+  cursor: pointer;
+}
+
+.bar-right {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  color: #d6334a;
+}
+
+#clock {
+  cursor: pointer;
+}
+
+.window {
+  position: absolute;
+  background-color: #fffde7;
+  border: 2px solid black;
+  box-shadow: 2px 2px 0px black;
+  user-select: none;
+}
+
+.window-header {
+  background-color: #fffde7;
+  border-bottom: 2px solid black;
+  padding: 4px 8px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  cursor: move; /* Drag handle indicator */
+}
+
+.close-x {
+  color: red;
+  font-family: sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.window-body {
+  background-color: white;
+  padding: 8px;
+  user-select: auto;
+}
+
+.file-btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  background-color: #efefef;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.file-text {
+  font-size: 10px;
+  margin-left: 2px;
+}
+
+.song-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  margin: 12px 0;
+}
+
+.viz-box {
+  background-color: black;
+  height: 45px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.square-speaker {
+  width: 14px;
+  height: 14px;
+  border: 2px solid white;
+}
+
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.action-btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  background-color: #ffa45b;
+  border: 1px solid black;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.slider-label {
+  font-size: 11px;
+}
+
+.vol-slider {
+  flex-grow: 1;
+}
+
+.cam-box {
+  background-color: black;
+  height: 130px;
+  margin-bottom: 8px;
+}
+
+.btn-center {
+  text-align: center;
+}
+
+.notes-input {
+  width: 100%;
+  height: 130px;
+  border: 1px solid #777;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  padding: 6px;
+  resize: none;
+}
+
+.cal-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  border: 1px solid #777;
+  background-color: #777;
+}
+
+.cal-cell {
+  background-color: white;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 9px;
+}
+
+.cal-cell.active-day {
+  background-color: red;
+  color: white;
+}
+
+.app-links-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.app-link {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  display: block;
+}
+
+.paint-grid {
+  width: 192px;
+  height: 192px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(16, 12px);
+  grid-template-rows: repeat(16, 12px);
+  margin-bottom: 8px;
+}
+
+.pixel-cell {
+  background-color: white;
+  border: 1px solid #eee;
+  cursor: pointer;
+}
+
+.paint-tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
