@@ -1,13 +1,18 @@
-* { box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Quicksand&family=Space+Mono&display=swap');
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  margin: 0;
+  margin: 0px;
+  padding: 0px;
   height: 100vh;
   background-image: url("ebd9ebf4e7540eeac4305df93ff34bb1.jpg");
-  background-size: cover;      
-  background-position: center;  
-  background-repeat: no-repeat;  
-  font-family: 'Quicksand', sans-serif;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Quicksand, sans-serif;
   color: #4A3423;
   position: relative;
   overflow: hidden;
@@ -15,19 +20,22 @@ body {
 
 .top-bar {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: rgba(28, 78, 2, 0.15);
   backdrop-filter: blur(10px);
-  padding: 4px 16px;
-  z-index: 9999;
+  padding: 4px 16px 4px 16px;
+  z-index: 99999;
 }
 
-.nav-app-group { display: flex; gap: 8px; }
+.nav-app-group {
+  display: flex;
+  gap: 8px;
+}
 
 .icon-nav-button {
   display: flex;
@@ -36,35 +44,43 @@ body {
   background: rgba(255, 255, 255, 0.45);
   border: 1.5px solid #4A3423;
   border-radius: 20px;
-  padding: 4px 12px 4px 8px;
+  padding-top: 4px;
+  padding-right: 12px;
+  padding-bottom: 4px;
+  padding-left: 8px;
   cursor: pointer;
   color: #4A3423;
-  font: 700 11px 'Orbitron', sans-serif;
-  transition: all 0.15s;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: bold;
 }
 
 .icon-nav-button:hover {
   background: #F4EBDA;
-  transform: translateY(-1px);
+  margin-top: -1px;
 }
 
 .nav-tagline, .nav-button {
-  font: 700 11px 'Orbitron', sans-serif;
+  font-family: Orbitron;
+  font-size: 11px;
+  font-weight: bold;
   background: rgba(255, 255, 255, 0.4);
-  padding: 5px 12px;
+  padding: 5px 12px 5px 12px;
   border-radius: 16px;
-  margin: 4px 0;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
-/* Windows */
 .window {
   position: absolute;
   width: 90%;
   max-width: 600px;
-  background: #F4EBDA;
-  border: 2px solid #4A3423;
+  background-color: #F4EBDA;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #4A3423;
   border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(74, 52, 35, 0.2);
+  box-shadow: 0px 10px 25px #332211;
   display: flex;
   flex-direction: column;
 }
@@ -77,7 +93,6 @@ body {
   align-items: center;
   justify-content: space-between;
   cursor: grab;
-  user-select: none;
 }
 
 .close-btn {
@@ -85,13 +100,15 @@ body {
   height: 12px;
   background: #B5502D;
   border: 1px solid #7E3218;
-  border-radius: 50%;
+  border-radius: 999px;
   cursor: pointer;
 }
 
 .header-text {
   margin: 0;
-  font: 700 11px 'Orbitron', sans-serif;
+  font-family: 'Orbitron';
+  font-weight: bold;
+  font-size: 11px;
   letter-spacing: 1px;
 }
 
@@ -102,20 +119,34 @@ body {
   align-items: center;
 }
 
-.main-title { margin: 0; font-family: 'Orbitron', sans-serif; }
-.subtitle { font: 12px 'Space Mono', monospace; color: #7A6B8A; margin: 2px 0 12px; }
+.main-title {
+  margin: 0px;
+  font-family: 'Orbitron', sans-serif;
+}
 
-/* Audio Controls */
-#musicUploader { display: none; }
+.subtitle {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: #7A6B8A;
+  margin-top: 2px;
+  margin-bottom: 12px;
+}
+
+#musicUploader {
+  display: none;
+}
+
 .custom-file-upload {
-  font: 700 10px 'Orbitron', sans-serif;
+  font-family: Orbitron;
+  font-size: 10px;
+  font-weight: bold;
   padding: 6px 12px;
   background: #7A6B8A;
   color: #F4EBDA;
   border: 2px solid #4A3423;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 3px 0 #4A3423;
+  box-shadow: 0px 3px 0px #4A3423;
 }
 
 .cassette-container {
@@ -124,14 +155,21 @@ body {
   background: #3E3550;
   border: 4px solid #4A3423;
   border-radius: 10px;
-  margin: 10px auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 24px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
-.tape-reel { font-size: 34px; user-select: none; }
+.tape-reel {
+  font-size: 34px;
+}
+
 .tape-window {
   width: 60px;
   height: 24px;
@@ -139,18 +177,64 @@ body {
   border: 2px solid #4A3423;
   position: relative;
 }
-.tape-line { width: 100%; height: 4px; background: #B5502D; position: absolute; top: 8px; }
-.spinning { animation: spin 2s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
 
-.track-title { font: 11px 'Space Mono', monospace; margin: 4px 0 8px; }
-.progress-container { display: flex; align-items: center; gap: 8px; width: 100%; }
-.time-display { font: 10px 'Space Mono', monospace; }
-#progressBar { flex-grow: 1; accent-color: #B5502D; }
+.tape-line {
+  width: 100%;
+  height: 4px;
+  background: #B5502D;
+  position: absolute;
+  top: 8px;
+}
 
-.deck-controls { display: flex; gap: 8px; }
+.spinning {
+  animation-name: spin;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.track-title {
+  font-family: 'Space Mono';
+  font-size: 11px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.time-display {
+  font-family: 'Space Mono';
+  font-size: 10px;
+}
+
+#progressBar {
+  width: 100%;
+  accent-color: #B5502D;
+}
+
+.deck-controls {
+  display: flex;
+  gap: 8px;
+}
+
 .deck-btn {
-  font: 700 10px 'Orbitron', sans-serif;
+  font-family: 'Orbitron';
+  font-size: 10px;
+  font-weight: bold;
   padding: 6px 12px;
   background: #D6A84F;
   color: #4A3423;
@@ -159,21 +243,29 @@ body {
   cursor: pointer;
   box-shadow: 0 3px 0 #4A3423;
 }
+
 .deck-btn.pressed, .deck-btn:active {
-  box-shadow: none;
-  transform: translateY(3px);
+  box-shadow: 0px 0px 0px #000;
+  margin-top: 3px;
   background: #B5502D;
   color: #F4EBDA;
 }
 
-.volume-container { display: flex; align-items: center; gap: 6px; margin-top: 10px; font: 700 10px 'Orbitron'; }
+.volume-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-family: 'Orbitron';
+  font-size: 10px;
+  font-weight: bold;
+}
 
-/* Camera Viewfinder */
 .viewfinder {
   position: relative;
   width: 100%;
   height: 200px;
-  background: #111;
+  background: black;
   border: 3px solid #4A3423;
   border-radius: 8px;
   overflow: hidden;
@@ -190,73 +282,82 @@ body {
   position: absolute;
   top: 8px;
   left: 8px;
-  font: 700 10px 'Orbitron', sans-serif;
-  color: #ff4444;
+  font-family: 'Orbitron';
+  font-size: 10px;
+  font-weight: bold;
+  color: red;
   animation: blink 1s infinite;
 }
 
 .viewfinder-crosshair {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: rgba(255,255,255,0.4);
-  font: 18px monospace;
-  pointer-events: none;
+  top: 45%;
+  left: 48%;
+  color: white;
+  font-size: 18px;
+  font-family: monospace;
 }
 
-@keyframes blink { 50% { opacity: 0; } }
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
 .notepad-input {
   width: 100%;
   height: 140px;
-  background: #FFF;
+  background: white;
   border: 2px solid #4A3423;
   border-radius: 6px;
-  font: 12px 'Space Mono', monospace;
+  font-family: 'Space Mono';
+  font-size: 12px;
   padding: 8px;
-  resize: vertical;
 }
-/* Calendar UI */
+
 .calendar-header-bar {
-  font: 700 12px 'Orbitron', sans-serif;
+  font-family: 'Orbitron';
+  font-weight: bold;
+  font-size: 12px;
   color: #4A3423;
   margin-bottom: 8px;
   text-align: center;
-  letter-spacing: 1px;
 }
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: auto auto auto auto auto auto auto;
   gap: 4px;
   width: 100%;
   text-align: center;
 }
 
 .day-label {
-  font: 700 10px 'Orbitron', sans-serif;
+  font-family: 'Orbitron';
+  font-weight: bold;
+  font-size: 10px;
   color: #7A6B8A;
   padding-bottom: 4px;
 }
 
 .cal-day {
-  font: 11px 'Space Mono', monospace;
-  background: #FFF;
+  font-family: 'Space Mono';
+  font-size: 11px;
+  background: #FFFFFF;
   border: 1px solid #4A3423;
   border-radius: 4px;
-  padding: 4px 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
   color: #4A3423;
 }
 
 .cal-day.empty {
-  background: transparent;
-  border-color: transparent;
+  background: none;
+  border: none;
 }
 
 .cal-day.today {
   background: #B5502D;
-  color: #F4EBDA;
+  color: white;
   font-weight: bold;
-  box-shadow: inset 0 0 0 1px #4A3423;
 }
