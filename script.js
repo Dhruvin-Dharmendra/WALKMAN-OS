@@ -1,164 +1,155 @@
-// Clock
-const updateClock = () => {
-  document.querySelector("#timeElement").textContent = new Date().toLocaleTimeString();
-};
+function updateClock() {
+  document.getElementById("clock").innerHTML = new Date().toLocaleTimeString();
+}
 setInterval(updateClock, 1000);
 updateClock();
 
-// Z-Index Management
-let topZ = 10;
-const bringFront = (el) => { el.style.zIndex = ++topZ; };
-
-document.querySelectorAll(".window").forEach(win => {
-  win.addEventListener("mousedown", () => bringFront(win));
-});
-
-// App Window Toggles
-const setupWindow = (winId, openBtnId, closeBtnId) => {
-  const win = document.querySelector(winId);
-  document.querySelector(closeBtnId).onclick = () => win.style.display = "none";
-  document.querySelector(openBtnId).onclick = () => {
-    win.style.display = "flex";
-    bringFront(win);
-  };
+document.getElementById("btn1").onclick = function() {
+  document.getElementById("playerBox").style.display = "block";
+};
+document.getElementById("closePlayer").onclick = function() {
+  document.getElementById("playerBox").style.display = "none";
 };
 
-setupWindow("#welcome", "#welcomeopen", "#welcomeclose");
-setupWindow("#notepad", "#notepadopen", "#notepadclose");
-setupWindow("#camera", "#cameraopen", "#cameraclose");
-
-// Audio Player
-const audio = document.querySelector("#audioPlayer");
-const reelL = document.querySelector("#reelLeft");
-const reelR = document.querySelector("#reelRight");
-
-const setPlaying = (play) => {
-  reelL.classList.toggle("spinning", play);
-  reelR.classList.toggle("spinning", play);
-  document.querySelector("#playBtn").classList.toggle("pressed", play);
+document.getElementById("btn2").onclick = function() {
+  document.getElementById("cameraBox").style.display = "block";
+  startCamera();
+};
+document.getElementById("closeCamera").onclick = function() {
+  document.getElementById("cameraBox").style.display = "none";
 };
 
-document.querySelector("#playBtn").onclick = () => { audio.play(); setPlaying(true); };
-document.querySelector("#pauseBtn").onclick = () => { audio.pause(); setPlaying(false); };
-document.querySelector("#stopBtn").onclick = () => { 
-  audio.pause(); 
-  audio.currentTime = 0; 
-  setPlaying(false); 
+document.getElementById("btn3").onclick = function() {
+  document.getElementById("notesBox").style.display = "block";
+};
+document.getElementById("closeNotes").onclick = function() {
+  document.getElementById("notesBox").style.display = "none";
 };
 
-document.querySelector("#musicUploader").onchange = (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-  audio.src = URL.createObjectURL(file);
-  document.querySelector("#trackTitle").textContent = file.name;
+document.getElementById("clock").onclick = function() {
+  document.getElementById("calendarBox").style.display = "block";
+  makeCalendar();
+};
+document.getElementById("closeCalendar").onclick = function() {
+  document.getElementById("calendarBox").style.display = "none";
+};
+
+var audio = document.getElementById("audio");
+var circle1 = document.getElementById("circle1");
+var circle2 = document.getElementById("circle2");
+
+document.getElementById("playBtn").onclick = function() {
   audio.play();
-  setPlaying(true);
+  circle1.className = "spin";
+  circle2.className = "spin";
+};
+document.getElementById("pauseBtn").onclick = function() {
+  audio.pause();
+  circle1.className = "";
+  circle2.className = "";
+};
+document.getElementById("stopBtn").onclick = function() {
+  audio.pause();
+  audio.currentTime = 0;
+  circle1.className = "";
+  circle2.className = "";
 };
 
-audio.ontimeupdate = () => {
-  if (!audio.duration) return;
-  document.querySelector("#progressBar").value = (audio.currentTime / audio.duration) * 100;
-  document.querySelector("#currentTimeDisplay").textContent = formatTime(audio.currentTime);
-  document.querySelector("#durationDisplay").textContent = formatTime(audio.duration);
+document.getElementById("fileInput").onchange = function(e) {
+  var file = e.target.files[0];
+  if (file) {
+    audio.src = URL.createObjectURL(file);
+    document.getElementById("songName").innerHTML = file.name;
+    audio.play();
+    circle1.className = "spin";
+    circle2.className = "spin";
+  }
 };
 
-document.querySelector("#progressBar").oninput = (e) => {
-  if (audio.duration) audio.currentTime = (e.target.value / 100) * audio.duration;
+audio.ontimeupdate = function() {
+  if (audio.duration) {
+    document.getElementById("seekBar").value = (audio.currentTime / audio.duration) * 100;
+  }
 };
 
-document.querySelector("#volumeSlider").oninput = (e) => audio.volume = e.target.value / 100;
+document.getElementById("seekBar").oninput = function(e) {
+  if (audio.duration) {
+    audio.currentTime = (e.target.value / 100) * audio.duration;
+  }
+};
 
-function formatTime(sec) {
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60);
-  return `${m}:${s < 10 ? '0' : ''}${s}`;
+document.getElementById("volBar").oninput = function(e) {
+  audio.volume = e.target.value / 100;
+};
+
+function startCamera() {
+  var video = document.getElementById("webcam");
+  if (!video.srcObject) {
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+      video.srcObject = stream;
+    }).catch(function() {
+      alert("no camera found");
+    });
+  }
 }
 
-// Retro Camera Stream & Snap Logic
-const video = document.querySelector("#webcam");
-const canvas = document.querySelector("#photoCanvas");
-const snapBtn = document.querySelector("#snapBtn");
-const downloadLink = document.querySelector("#downloadLink");
-
-document.querySelector("#cameraopen").addEventListener("click", async () => {
-  if (!video.srcObject) {
-    try {
-      video.srcObject = await navigator.mediaDevices.getUserMedia({ video: true });
-    } catch (err) {
-      alert("Camera access denied or unlinked.");
-    }
-  }
-});
-
-snapBtn.onclick = () => {
-  const ctx = canvas.getContext("2d");
-  canvas.width = video.videoWidth || 320;
-  canvas.height = video.videoHeight || 240;
-  
-  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-  
-  // Download snapshot
-  downloadLink.href = canvas.toDataURL("image/png");
-  downloadLink.style.display = "inline-block";
+document.getElementById("snapBtn").onclick = function() {
+  var video = document.getElementById("webcam");
+  var canvas = document.getElementById("photoCanvas");
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  var ctx = canvas.getContext("2d");
+  ctx.drawImage(video, 0, 0);
+  var link = document.getElementById("saveLink");
+  link.href = canvas.toDataURL();
+  link.style.display = "inline";
 };
 
-// Simple Drag System
-function makeDraggable(el) {
-  let x = 0, y = 0;
-  const header = el.querySelector(".window-header");
-  
-  header.onmousedown = (e) => {
-    bringFront(el);
-    x = e.clientX;
-    y = e.clientY;
-    document.onmousemove = (e) => {
-      el.style.top = (el.offsetTop - (y - e.clientY)) + "px";
-      el.style.left = (el.offsetLeft - (x - e.clientX)) + "px";
-      x = e.clientX;
-      y = e.clientY;
+function makeCalendar() {
+  var now = new Date();
+  var names = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  document.getElementById("monthYear").innerHTML = names[now.getMonth()] + " " + now.getFullYear();
+
+  var grid = document.getElementById("calGrid");
+  grid.innerHTML = "";
+
+  var firstDay = new Date(now.getFullYear(), now.getMonth(), 1).getDay();
+  var totalDays = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+
+  for (var i = 0; i < firstDay; i++) {
+    var blank = document.createElement("div");
+    grid.appendChild(blank);
+  }
+
+  for (var d = 1; d <= totalDays; d++) {
+    var day = document.createElement("div");
+    day.innerHTML = d;
+    if (d == now.getDate()) {
+      day.className = "today";
+    }
+    grid.appendChild(day);
+  }
+}
+
+var boxes = document.getElementsByClassName("box");
+for (var i = 0; i < boxes.length; i++) {
+  makeDraggable(boxes[i]);
+}
+
+function makeDraggable(box) {
+  var top = box.querySelector(".boxtop");
+  var startX, startY;
+  top.onmousedown = function(e) {
+    startX = e.clientX;
+    startY = e.clientY;
+    document.onmousemove = function(e) {
+      box.style.left = (box.offsetLeft - (startX - e.clientX)) + "px";
+      box.style.top = (box.offsetTop - (startY - e.clientY)) + "px";
+      startX = e.clientX;
+      startY = e.clientY;
     };
-    document.onmouseup = () => {
+    document.onmouseup = function() {
       document.onmousemove = null;
-      document.onmouseup = null;
     };
   };
 }
-// Register Calendar Window for Dragging & Focus
-setupWindow("#calendarWindow", "#timeElement", "#calendarclose");
-
-// Calendar Rendering Engine
-function renderCalendar() {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth();
-  
-  const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-  document.querySelector("#calMonthYear").textContent = `${monthNames[month]} ${year}`;
-
-  const firstDayIndex = new Date(year, month, 1).getDay();
-  const totalDays = new Date(year, month + 1, 0).getDate();
-  const daysContainer = document.querySelector("#calendarDays");
-  
-  daysContainer.innerHTML = "";
-
-  // Empty slots before month start
-  for (let i = 0; i < firstDayIndex; i++) {
-    const emptyDiv = document.createElement("div");
-    emptyDiv.className = "cal-day empty";
-    daysContainer.appendChild(emptyDiv);
-  }
-
-  // Active month days
-  for (let day = 1; day <= totalDays; day++) {
-    const dayDiv = document.createElement("div");
-    dayDiv.className = "cal-day";
-    if (day === now.getDate()) dayDiv.classList.add("today");
-    dayDiv.textContent = day;
-    daysContainer.appendChild(dayDiv);
-  }
-}
-
-renderCalendar();
-
-
-document.querySelectorAll(".window").forEach(makeDraggable);
